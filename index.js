@@ -5,8 +5,7 @@ const axios = require('axios')
 const url = 'https://es.wikipedia.org/wiki/Categor%C3%ADa:M%C3%BAsicos_de_rap'
 const urlBase = 'https://es.wikipedia.org'
 const links = []
-const parrafos = []
-const images = []
+
 const scraping = async (urlBase, linkArray) => {
     const dataBase = []
     const axiosPromises = []
@@ -16,6 +15,8 @@ const scraping = async (urlBase, linkArray) => {
     const responses = await Promise.all(axiosPromises)
     responses.map(element => {
         const obj = {}
+        const parrafos = []
+        const images = []
         const html = element.data
         const $ = cheerio.load(html)
         $('p').each((index, element) => {
